@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "RevitOutOfContext_gRPC_ProtosF";
+import "google/protobuf/empty.proto";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (CommandReply);
+  rpc HearCommands (google.protobuf.Empty) returns (CommandReply);
+  rpc ServerDataStream (stream HelloRequest) returns (stream CommandReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+  string text = 2;
+  string revitVersion = 3;
+  string procesId = 4;
+  string ipAdress = 5;
+}
+message StreamRequest { }
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+message CommandReply {
+  string Command = 1;
+}

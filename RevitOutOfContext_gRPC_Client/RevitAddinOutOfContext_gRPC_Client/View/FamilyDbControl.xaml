@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="RevitAddinOutOfContext_gRPC_Client.View.FamilyDbControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RevitAddinOutOfContext_gRPC_Client.View"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>        
+        <DataTemplate x:Key="FamilyTemplate">
+            <Border
+                BorderThickness="1"
+                CornerRadius="1"
+                BorderBrush="LightGray">
+                <DockPanel>
+                <CheckBox
+                    DockPanel.Dock="Left"
+                    IsChecked="{Binding Path=IsFamilyChecked}"
+                    Width="20"/>
+                <Button
+                    DockPanel.Dock="Left"
+                    Width="20"
+                    Content="{Binding Path = ButtonContent, Mode=TwoWay}"
+                    ToolTip="{Binding Path=ButtonToolTip}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.LoadFamilyCommand}"
+                    CommandParameter="{Binding Path = FullName}"/>
+                <Button
+                    DockPanel.Dock="Left"
+                    Width="20"
+                    Content="Р"
+                    ToolTip="Разместить экземпляр семейства в модели"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.NewFamilyInstanceCommand}"
+                    CommandParameter="{Binding Path = FullName}"
+                    IsEnabled="{Binding Path=IsLoaded}"/>
+                <Button
+                    DockPanel.Dock="Left"
+                    Width="20"
+                    Content="С"
+                    ToolTip="Открыть свойства семейства"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl, Mode=FindAncestor}, Path=DataContext.GetPropertiesCommand}"
+                    CommandParameter="{Binding Path = FullName}"/>
+                <TextBlock
+                    DockPanel.Dock="Right"                    
+                    Text="{Binding Path=Name}"
+                    Margin="5 0 0 0"/>
+                </DockPanel>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="CategoryTemplate">
+            <Expander Header="{Binding Path=Name}" IsExpanded="{Binding Path = IsCategoryExpanded}">
+                <ScrollViewer MaxHeight="250">
+                    <ItemsControl              
+                        ItemsSource="{Binding Path=DBFamilies}"
+                        ItemTemplate="{StaticResource FamilyTemplate}"/>
+                </ScrollViewer>
+            </Expander>
+        </DataTemplate>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <StackPanel>
+            <Button 
+                Command="{Binding RefreshFamiliesCommand}" 
+                Content="Обновить список семейств"/>
+            <Button 
+                Command="{Binding RefreshFamiliesCommand}" 
+                Content="Заявка на создание семейства"/>
+            <TextBlock
+                Text="Поиск по названию семейства"
+                HorizontalAlignment="Center"/>
+            <TextBox
+                Height="20"
+                Text="{Binding FindFamilyName}"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                TextChanged="TextBox_TextChanged"
+                Width="250"
+                />
+            <ItemsControl 
+                ItemsSource="{Binding DBCategories}" 
+                ItemTemplate="{StaticResource CategoryTemplate}"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAddinOutOfContext_gRPC_Client", "RevitAddinOutOfContext_gRPC_Client\RevitAddinOutOfContext_gRPC_Client.csproj", "{6DC1856E-24BE-4A81-902D-48719849740D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Debug|x64.Build.0 = Debug|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Release|x64.ActiveCfg = Release|Any CPU
+		{6DC1856E-24BE-4A81-902D-48719849740D}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {585ED025-2DED-40B2-BDD0-F1926EA7029B}
+	EndGlobalSection
+EndGlobal
